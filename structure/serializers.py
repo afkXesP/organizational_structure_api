@@ -10,23 +10,19 @@ class EmployeeSerializer(serializers.ModelSerializer):
         fields = ['id', 'department', 'full_name', 'position', 'hired_at', 'created_at']
         read_only_fields = ['id', 'created_at', 'department']
 
-    def validate_full_name(self, value: str) -> str:
+    def _validate_text_field(self, value: str, field_name: str) -> str:
         value = value.strip()
         if not value:
-            raise serializers.ValidationError('ФИО не может быть пустым')
-
+            raise serializers.ValidationError(f'{field_name} не может быть пусты')
         if len(value) > 200:
             raise serializers.ValidationError('Максимальная длина - 200 символов')
-
         return value
+
+    def validate_full_name(self, value: str) -> str:
+        return self._validate_text_field(value, 'ФИО')
 
     def validate_position(self, value: str) -> str:
-        value = value.strip()
-        if not value:
-            raise serializers.ValidationError('Должность не может быть пустой')
-        if len(value) > 200:
-            raise serializers.ValidationError('Максимальная длина - 200 символов')
-        return value
+        return self._validate_text_field(value, 'Должность')
 
 
 class DepartmentSerializer(serializers.ModelSerializer):
