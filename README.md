@@ -61,6 +61,13 @@
    ```
    После запуска контейнера API доступен по адресу: ```http://localhost:8000/api/```
 
+### API документация (Swagger)
+
+Интерактивная документация доступна по адресу:
+```http://localhost:8000/api/docs/```
+
+OpenAPI-схема:```http://localhost:8000/api/schema/```
+
 ### Пример .env
     DEBUG=True
     SECRET_KEY=django-secret-key
