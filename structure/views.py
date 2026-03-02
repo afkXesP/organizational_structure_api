@@ -1,4 +1,3 @@
-from django.core.serializers import serialize
 from django.shortcuts import get_object_or_404
 from django.db import transaction
 from rest_framework import status, viewsets

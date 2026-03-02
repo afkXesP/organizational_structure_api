@@ -31,4 +31,4 @@ class Employee(models.Model):
     full_name = models.CharField(max_length=200, blank=False)
     position = models.CharField(max_length=200, blank=False)
     hired_at = models.DateField(null=True, blank=True)
-    created_at = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)

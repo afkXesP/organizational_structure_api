@@ -20,6 +20,14 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
         return value
 
+    def validate_position(self, value: str) -> str:
+        value = value.strip()
+        if not value:
+            raise serializers.ValidationError('Должность не может быть пустой')
+        if len(value) > 200:
+            raise serializers.ValidationError('Максимальная длина - 200 символов')
+        return value
+
 
 class DepartmentSerializer(serializers.ModelSerializer):
     """Сериализатор для работы с подразделениями"""
