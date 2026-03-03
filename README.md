@@ -52,7 +52,7 @@
    
 2. Создайте файл окружения
    ```bash
-    cp .env.example .env
+    cp .env_example .env
    ```
    
 3. Запустите контейнеры
